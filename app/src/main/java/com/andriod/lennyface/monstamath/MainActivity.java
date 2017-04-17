@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Extras
 
-        //Buttons ( Player statistics, Monster/math symbols guide and abck button)
+        //Buttons ( Player statistics, Monster/math symbols guide and back button)
     Button statistics;
     Button beastiary;
     Button extrasBack;
@@ -86,33 +86,7 @@ public class MainActivity extends AppCompatActivity {
     TextView charactersCompleted;
 
 
-    // game screne
 
-        //Buttons ( Num select for answering questions, button to go to options menu, enter answer
-            // and back button for if player enters the wrong num by accident)
-    Button optionsDuringGame;
-    Button gameNumZero;
-    Button gameNumOne;
-    Button gameNumTwo;
-    Button gameNumThree;
-    Button gameNumFour;
-    Button gameNumFive;
-    Button gameNumSix;
-    Button gameNumSeven;
-    Button gameNumEight;
-    Button gameNumNine;
-    Button gameBack;
-    Button gameEnter;
-
-        //TextView ()
-    TextView characterName;
-    TextView monsterName;
-    TextView timer;
-    TextView playerHealth;
-    TextView monsterHealth;
-    TextView playerNum;
-    TextView monsterNum;
-    TextView mathSymbol;
 
     //Level Change Screen
 

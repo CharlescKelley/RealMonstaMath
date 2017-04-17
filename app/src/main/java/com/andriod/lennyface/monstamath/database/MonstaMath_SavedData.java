@@ -13,6 +13,8 @@ public class MonstaMath_SavedData {
     public static final String COLUMN_MUSICSELECTION = "music";
     public static final String COLUMN_VOLUMECONTROL = "volume";
     public static final String COLUMN_HAPTIC = "haptic";
+    public static final String COLUMN_NUMANSCORRECT = "correct answers";
+    public static final String COLUMN_NUMANSWRONG = "correct answers";
 
     public static final String SQL_CREATE =
             "Create Table " + TABLE_GAMESAVE + "(" +
@@ -22,7 +24,9 @@ public class MonstaMath_SavedData {
                     COLUMN_CHARACTERSCOMPLETED + "TEXT," +
                     COLUMN_MUSICSELECTION + "TEXT," +
                     COLUMN_VOLUMECONTROL + "REAL," +
-                    COLUMN_HAPTIC + "INTEGER," + ");";
+                    COLUMN_HAPTIC + "INTEGER," +
+                    COLUMN_NUMANSCORRECT + "INTEGER" +
+                    COLUMN_NUMANSWRONG + "INTEGER" + ");";
 
     public static final String SQL_DELETE = "DROP TABLE" + TABLE_GAMESAVE;
 }
