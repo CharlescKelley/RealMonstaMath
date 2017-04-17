@@ -37,7 +37,7 @@ public class GameMain {
 
     // Variables
         // Game variables
-    int lv = 0;
+    int lv = 1;
     int lives = 3;
         // Character varaibles
     private int playerHealth =  100;

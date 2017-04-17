@@ -22,10 +22,29 @@ public class Monster {
         int newHealth = 0;
         int isDivisibleByTwo = level % 2;
 
-        if (isDivisibleByTwo == 0)
-        {
-            newHealth = health + (level * 10);
-        }
+       if(level < 6)
+       {
+           newHealth = health + (level *10);
+       }
+       else if(level >= 6 && level < 14)
+       {
+           if (isDivisibleByTwo == 0)
+           {
+               newHealth = health + (level * 10);
+           }
+       }
+       else if(level == 14)
+       {
+           newHealth =  health + 250;
+       }
+       else if(level == 15)
+       {
+           newHealth = health + 500;
+       }
+       else if(level == 18)
+       {
+           newHealth =  health + 500;
+       }
 
         return newHealth;
     }
@@ -35,19 +54,26 @@ public class Monster {
         double newDamage = 0;
         int isDivisibleByTwo = level % 2;
 
-        if(lv <= 10)
+        if(lv <= 13)
         {
             if (isDivisibleByTwo == 0)
             {
-                newDamage = Math.pow(damage, 1.1);
+                newDamage = Math.pow(damage, 1.05);
             }
 
         }
-        else if(lv > 10 && lv < 20)
+        else if(level == 14)
         {
-
+            newDamage = damage + 10;
         }
-        else ;
+        else if(level == 15)
+        {
+            newDamage = damage + 20;
+        }
+        else if(level == 18)
+        {
+            newDamage = damage + 30;
+        }
 
         return newDamage;
     }
