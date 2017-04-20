@@ -37,7 +37,7 @@ public class GameMain {
 
     // Variables
         // Game variables
-    int lv;
+    int lv = 1;
     int lives = 3;
     int monsterCount;
     int[] nums = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
@@ -68,7 +68,8 @@ public class GameMain {
     // Constructors
     Player player = new Player(playerHealth, playerDamage, lv, lives);
     Monster monster = new Monster(monsterHealth, monsterDamage, lv);
-    MathLogic mathProblem = new MathLogic(playerType, nums);
+    MathLogic mathProblem = new MathLogic(nums);
+    Battle battle = new Battle();
 
 
 
@@ -79,6 +80,13 @@ public class GameMain {
 
     private void game()
     {
+        mathProblem.createPlayerNum();
+        mathProblem.createMonsterNum();
 
+        if(lv <= 13)
+        {
+            monster.chooseMonster();
+            
+        }
     }
 }

@@ -13,10 +13,7 @@ public class MathLogic {
     private int monsterNum;
     private int[] nums = new int[10];
 
-    private String type;
-
-    public MathLogic(String math, int[] arrayOfNums) {
-        type = math;
+    public MathLogic(int[] arrayOfNums) {
         for(int i = 0; i <= nums.length; i++)
         {
             nums[i] = arrayOfNums[i];
