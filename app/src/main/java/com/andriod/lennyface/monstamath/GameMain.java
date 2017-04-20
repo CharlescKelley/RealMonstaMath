@@ -40,7 +40,7 @@ public class GameMain {
     int lv = 1;
     int lives = 3;
     int monsterCount;
-    int[] nums = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+    int[] nums = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
     String playerType = "";
     String monsterName = "";
     boolean run;
@@ -100,6 +100,8 @@ public class GameMain {
         textMonsterName.setText(monster.setMonster());
         textMonsterNum.setText(mathProblem.monsterNum);
         textPlayerNum.setText(mathProblem.playerNum);
+        textPlayerHealth.setText(player.setHealth());
+        textMonsterHealth.setText(monster.setHealth());
         if(playerType == "addition")
         {
             textMathSymbol.setText("+");
