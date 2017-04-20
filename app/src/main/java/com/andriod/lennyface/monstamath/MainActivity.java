@@ -36,11 +36,11 @@ public class MainActivity extends AppCompatActivity {
     Button numEight;
     Button numNine;
     Button characterSelectBack;
-    Button addition;
-    Button subtraction;
-    Button multiplication;
-    Button division;
-    Button bAllMath;
+    Button additionClass = (Button) findViewById(R.id.additionButton);
+    Button subtractionClass = (Button) findViewById(R.id.subtractionButton);
+    Button multiplicationClass = (Button) findViewById(R.id.multiplicationButton);
+    Button divisionClass = (Button) findViewById(R.id.divisionButton);
+    Button bAllMath = (Button) findViewById(R.id.bAllMath);;
 
         // TextViews ( Show the names of the character and what math they do )
     TextView additionName;

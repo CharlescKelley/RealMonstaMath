@@ -7,17 +7,22 @@ public class Monster {
     private int health;
     private double damage;
     private int level;
+    private String monsterName = "";
 
 
-    public String chooseMonster()
+    public void chooseMonster()
     {
-        String monsterName = "";
         String[] monsters = {"Moltip", "Quosho", "Perrisent", "Minas", "Ekal", "Inikhul the lesser and GREATER",
                 "Pye", "Ruht", "Syn & Cosyn", "Imagen", "Delta", "Set"};
         Random rand = new Random();
         monsterName = monsters[rand.nextInt(11)];
+    }
+
+    public String setMonster()
+    {
         return monsterName;
     }
+
 
     public String chooseBoss(int num)
     {

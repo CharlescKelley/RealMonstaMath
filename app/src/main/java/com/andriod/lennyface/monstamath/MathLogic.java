@@ -9,8 +9,8 @@ public class MathLogic {
 
     private int userAnswer;
     private int correctAnswer;
-    private int playerNum;
-    private int monsterNum;
+    public int playerNum;
+    public int monsterNum;
     private int[] nums = new int[10];
 
     public MathLogic(int[] arrayOfNums) {
