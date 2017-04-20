@@ -98,6 +98,12 @@ public class MainActivity extends AppCompatActivity {
     TextView lvWrongAns;
     TextView ansPercent;
 
+        // Variables
+
+    int[] pickedNums = new int[10];
+    boolean isrunning = false;
+    String mathType = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
         SQLiteOpenHelper dbHelpler = new DB_helper(this); // instance  casted as the super class to
                                                           // call methods of super class easier
         database_SaveGame = dbHelpler.getWritableDatabase();
+
+        GameMain game = new GameMain(pickedNums, isrunning, mathType);
 
     }
 }

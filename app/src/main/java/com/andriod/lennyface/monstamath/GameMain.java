@@ -37,8 +37,13 @@ public class GameMain {
 
     // Variables
         // Game variables
-    int lv = 1;
+    int lv;
     int lives = 3;
+    int monsterCount;
+    int[] nums = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+    String playerType = "";
+    boolean run;
+
         // Character varaibles
     private int playerHealth =  100;
     private double playerDamage = 4;
@@ -46,9 +51,34 @@ public class GameMain {
     private int monsterHealth = 50;
     private double monsterDamage = 5;
 
-    // Constructors
 
+
+
+    public GameMain(int[] pickedNums, boolean isRunning, String mathType)
+    {
+        for(int i = 0; i <= 9; i++)
+        {
+            nums[i] = pickedNums[i];
+        }
+
+        run = isRunning;
+        playerType = mathType;
+    }
+
+    // Constructors
     Player player = new Player(playerHealth, playerDamage, lv, lives);
     Monster monster = new Monster(monsterHealth, monsterDamage, lv);
-    MathLogic mathProblem = new MathLogic();
+    MathLogic mathProblem = new MathLogic(playerType, nums);
+
+
+
+    private void runGame()
+    {
+
+    }
+
+    private void game()
+    {
+
+    }
 }

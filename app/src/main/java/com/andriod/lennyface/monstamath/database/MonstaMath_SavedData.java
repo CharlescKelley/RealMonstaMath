@@ -6,7 +6,7 @@ public class MonstaMath_SavedData {
     public static final String TABLE_GAMESAVE = "game_save";
     public static final String COLUMN_LEVEL = "level";
     public static final String COLUMN_CHARACTERTYPE = "character type";
-   // public static final String COLUMN_CHARACTERHEALTH = "character type";
+    public static final String COLUMN_LIVES = "character lives amount";
    // public static final String COLUMN_CHARACTERDAMAGE = "character type";
     public static final String COLUMN_MONSTERSUSED = "monster names";
     public static final String COLUMN_CHARACTERSCOMPLETED = "characters completed";
@@ -20,6 +20,7 @@ public class MonstaMath_SavedData {
             "Create Table " + TABLE_GAMESAVE + "(" +
                     COLUMN_LEVEL + " INTEGER, " +
                     COLUMN_CHARACTERTYPE + "TEXT," +
+                    COLUMN_LIVES + "INTEGER," +
                     COLUMN_MONSTERSUSED + "TEXT," +
                     COLUMN_CHARACTERSCOMPLETED + "TEXT," +
                     COLUMN_MUSICSELECTION + "TEXT," +

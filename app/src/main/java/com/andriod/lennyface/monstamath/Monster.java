@@ -1,23 +1,39 @@
 package com.andriod.lennyface.monstamath;
 
+import java.util.Random;
 
 public class Monster {
 
-    int health;
-    double damage;
-    int level;
-    double crit;
+    private int health;
+    private double damage;
+    private int level;
 
 
+    public String chooseMonster()
+    {
+        String monsterName = "";
+        String[] monsters = {"Moltip", "Quosho", "Perrisent", "Minas", "Ekal", "Inikhul the lesser and GREATER",
+                "Pye", "Ruht", "Syn & Cosyn", "Imagen", "Delta", "Set"};
+        Random rand = new Random();
+        monsterName = monsters[rand.nextInt(11)];
+        return monsterName;
+    }
+
+    public String chooseBoss(int num)
+    {
+        String boss = "";
+        String[] bosses = {"Enfin", "Elmin", "Ingrall", "Sigma", "Boolean"};
+        boss = bosses[num];
+        return boss;
+    }
 
     public Monster(int monsterHealth, double monsterDamage, int lv) {
-        health = modifyHealth(monsterHealth, lv);
-        damage = modifyDamage(monsterDamage, lv);
-        level =lv;
+        health = modifyMonsterHealth(monsterHealth, lv);
+        damage = modifyMonsterDamage(monsterDamage, lv);
 
     }
 
-    public int modifyHealth(int health, int level)
+    public int modifyMonsterHealth(int health, int level)
     {
         int newHealth = 0;
         int isDivisibleByTwo = level % 2;
@@ -49,7 +65,7 @@ public class Monster {
         return newHealth;
     }
 
-    public double modifyDamage(double damage, int lv)
+    public double modifyMonsterDamage(double damage, int lv)
     {
         double newDamage = 0;
         int isDivisibleByTwo = level % 2;

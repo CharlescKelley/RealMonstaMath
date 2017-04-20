@@ -11,21 +11,52 @@ public class MathLogic {
     private int correctAnswer;
     private int playerNum;
     private int monsterNum;
+    private int[] nums = new int[10];
 
     private String type;
 
-    public MathLogic(String math) {
+    public MathLogic(String math, int[] arrayOfNums) {
         type = math;
+        for(int i = 0; i <= nums.length; i++)
+        {
+            nums[i] = arrayOfNums[i];
+        }
     }
 
     public void createPlayerNum()
     {
         playerNum = rand.nextInt(10);
+        for(int i = 0; i <= nums.length; i++)
+        {
+            if(nums[i] != -1)
+            {
+                if((playerNum != nums[0]) || (playerNum != nums[1]) ||(playerNum != nums[2]) ||
+                        (playerNum != nums[3]) ||(playerNum != nums[4]) || (playerNum != nums[5]) ||
+                        (playerNum != nums[6]) || (playerNum != nums[7]) ||(playerNum != nums[8]) ||
+                        (playerNum != nums[9]))
+                {
+                    createPlayerNum();
+                }
+            }
+        }
     }
 
     public void createMonsterNum()
     {
         monsterNum = rand.nextInt(10);
+        for(int i = 0; i <= nums.length; i++)
+        {
+            if(nums[i] != -1)
+            {
+                if((monsterNum != nums[0]) || (monsterNum != nums[1]) ||(monsterNum != nums[2]) ||
+                        (monsterNum != nums[3]) ||(monsterNum != nums[4]) || (monsterNum != nums[5]) ||
+                        (monsterNum != nums[6]) || (monsterNum != nums[7]) ||(monsterNum != nums[8]) ||
+                        (monsterNum != nums[9]))
+                {
+                    createMonsterNum();
+                }
+            }
+        }
     }
 
     public int mathSwitch(String type)
