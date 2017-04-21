@@ -4,12 +4,10 @@ package com.andriod.lennyface.monstamath;
 
 public class Player {
 
-    int health;
+    private int health;
     double damage;
-    int level;
-    int lifes;
-
-
+    private int level;
+    private int lifes;
 
 
 
@@ -20,6 +18,16 @@ public class Player {
         level = lv;
         lifes = lives;
 
+    }
+
+    public int setHealth()
+    {
+        return health;
+    }
+
+    public double setDamage()
+    {
+        return damage;
     }
 
     public int modifyPlayerHealth(int health, int level)

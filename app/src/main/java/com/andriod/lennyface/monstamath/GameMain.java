@@ -1,8 +1,11 @@
 package com.andriod.lennyface.monstamath;
 
 
+import android.os.CountDownTimer;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.Random;
 
 
 public class GameMain {
@@ -44,7 +47,7 @@ public class GameMain {
     String playerType = "";
     String monsterName = "";
     boolean run;
-
+    Random rand = new Random();
 
         // Character varaibles
     private int playerHealth =  100;
@@ -72,8 +75,7 @@ public class GameMain {
     Monster monster = new Monster(monsterHealth, monsterDamage, lv);
     MathLogic mathProblem = new MathLogic(nums);
     Battle battle = new Battle();
-
-
+    Timer timer = new Timer(lv);
 
     private void runGame()
     {
@@ -82,13 +84,12 @@ public class GameMain {
 
     private void game()
     {
+        timer.setTime();
+        time();
+        nameOfMonsterForDisplay();
         setTextViews();
-
-        if(lv <= 13)
-        {
-            monster.chooseMonster();
-            setTextViews();
-        }
+        
+        
     }
 
     private void setTextViews()
@@ -115,5 +116,75 @@ public class GameMain {
             textMathSymbol.setText("x");
         }
         else textMathSymbol.setText("/");
+    }
+
+    private void nameOfMonsterForDisplay()
+    {
+        if(lv <= 13)
+        {
+            monster.chooseMonster();
+        }
+        else if (lv == 14 && playerType != "allMath")
+        {
+            switch(playerType)
+            {
+                case "addition":
+                    monster.chooseBoss(0);
+                    break;
+
+                case "subtraction":
+                    monster.chooseBoss(1);
+                    break;
+
+                case "multiplication":
+                    monster.chooseBoss(2);
+                    break;
+
+                case "division":
+                    monster.chooseBoss(3);
+                    break;
+            }
+
+        }
+        else if(lv >= 14 && playerType == "allMath")
+        {
+            switch(lv)
+            {
+                case 14:
+                    monster.chooseBoss(0);
+                    break;
+                case 15:
+                    monster.chooseBoss(1);
+                    break;
+                case 16:
+                    monster.chooseBoss(2);
+                    break;
+                case 17:
+                    monster.chooseBoss(3);
+                    break;
+                case 18:
+                    monster.chooseBoss(4);
+                    break;
+            } // switch
+
+        } // end else if
+    } // end method nameOfMonsterForDisplay
+
+
+    private void time()
+    {
+
+        CountDownTimer countDown = new CountDownTimer(timer.getStartTime(), timer.getInterval()) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                textTimer.setText((int) (millisUntilFinished/1000));
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
+
     }
 }

@@ -8,6 +8,7 @@ public class Monster {
     private double damage;
     private int level;
     private String monsterName = "";
+    private String bossName = "";
 
 
     public void chooseMonster()
@@ -20,16 +21,29 @@ public class Monster {
 
     public String setMonster()
     {
-        return monsterName;
+        if(level <= 13)
+        {
+            return monsterName;
+        }
+        else return bossName;
+    }
+
+    public int setHealth()
+    {
+        return health;
+    }
+
+    public double setDamage()
+    {
+        return damage;
     }
 
 
-    public String chooseBoss(int num)
+    public void chooseBoss(int num)
     {
-        String boss = "";
+
         String[] bosses = {"Enfin", "Elmin", "Ingrall", "Sigma", "Boolean"};
-        boss = bosses[num];
-        return boss;
+        bossName = bosses[num];
     }
 
     public Monster(int monsterHealth, double monsterDamage, int lv) {
