@@ -88,7 +88,7 @@ public class GameMain {
         time();
         nameOfMonsterForDisplay();
         setTextViews();
-        
+
         
     }
 
