@@ -2,7 +2,9 @@ package com.andriod.lennyface.monstamath;
 
 
 import android.os.CountDownTimer;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -38,16 +40,24 @@ public class GameMain {
     TextView textMonsterNum = (TextView) findViewById(R.id.displayMonsterNum);
     TextView textMathSymbol = (TextView) findViewById(R.id.displayMathSymbol);
 
+    // EditText
+    EditText playerAnswer = (EditText) findViewById(R.id.displayPlayerAns);
+
     // Variables
         // Game variables
     int lv = 1;
     int lives = 3;
     int monsterCount;
-    int[] nums = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
+    int[] nums = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+    int userIntAnswer = 0;
     String playerType = "";
     String monsterName = "";
+    String userStringAnswer = "";
     boolean run;
+    boolean endRound = false;
     Random rand = new Random();
+
+
 
         // Character varaibles
     private int playerHealth =  100;
@@ -56,7 +66,12 @@ public class GameMain {
     private int monsterHealth = 50;
     private double monsterDamage = 5;
 
-
+    // Constructors
+    Player player = new Player(playerHealth, playerDamage, lv, lives);
+    Monster monster = new Monster(monsterHealth, monsterDamage, lv);
+    MathLogic mathProblem = new MathLogic(nums);
+    Battle battle = new Battle();
+    Timer timer = new Timer(lv, playerType);
 
 
     public GameMain(int[] pickedNums, boolean isRunning, String mathType)
@@ -70,12 +85,6 @@ public class GameMain {
         playerType = mathType;
     }
 
-    // Constructors
-    Player player = new Player(playerHealth, playerDamage, lv, lives);
-    Monster monster = new Monster(monsterHealth, monsterDamage, lv);
-    MathLogic mathProblem = new MathLogic(nums);
-    Battle battle = new Battle();
-    Timer timer = new Timer(lv);
 
     private void runGame()
     {
@@ -88,6 +97,8 @@ public class GameMain {
         time();
         nameOfMonsterForDisplay();
         setTextViews();
+        userIntAnswer = Integer.parseInt(userStringAnswer);
+
 
         
     }
@@ -182,9 +193,112 @@ public class GameMain {
 
             @Override
             public void onFinish() {
-
+                endRound = true;
             }
         }.start();
 
+    }
+
+    private void getUserInput()
+    {
+        gameNumZero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(userStringAnswer.length() <= 2) {
+                    userStringAnswer += "0";
+                    playerAnswer.setText(userStringAnswer);
+                }
+            }
+        });
+
+        gameNumOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(userStringAnswer.length() <= 2) {
+                    userStringAnswer += "1";
+                    playerAnswer.setText(userStringAnswer);
+                }
+            }
+        });
+
+        gameNumTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(userStringAnswer.length() <= 2) {
+                    userStringAnswer += "2";
+                    playerAnswer.setText(userStringAnswer);
+                }
+            }
+        });
+
+        gameNumThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(userStringAnswer.length() <= 2) {
+                    userStringAnswer += "3";
+                    playerAnswer.setText(userStringAnswer);
+                }
+            }
+        });
+
+        gameNumFour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(userStringAnswer.length() <= 2) {
+                    userStringAnswer += "4";
+                    playerAnswer.setText(userStringAnswer);
+                }
+            }
+        });
+
+        gameNumFive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(userStringAnswer.length() <= 2) {
+                    userStringAnswer += "5";
+                    playerAnswer.setText(userStringAnswer);
+                }
+            }
+        });
+
+        gameNumSix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(userStringAnswer.length() <= 2) {
+                    userStringAnswer += "6";
+                    playerAnswer.setText(userStringAnswer);
+                }
+            }
+        });
+
+        gameNumSeven.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(userStringAnswer.length() <= 2) {
+                    userStringAnswer += "7";
+                    playerAnswer.setText(userStringAnswer);
+                }
+            }
+        });
+
+        gameNumEight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(userStringAnswer.length() <= 2) {
+                    userStringAnswer += "8";
+                    playerAnswer.setText(userStringAnswer);
+                }
+            }
+        });
+
+        gameNumNine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(userStringAnswer.length() <= 2) {
+                    userStringAnswer += "9";
+                    playerAnswer.setText(userStringAnswer);
+                }
+            }
+        });
     }
 }
