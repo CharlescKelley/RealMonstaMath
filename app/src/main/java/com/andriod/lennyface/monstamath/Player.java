@@ -5,14 +5,14 @@ package com.andriod.lennyface.monstamath;
 public class Player {
 
     private int health;
-    double damage;
+    int damage;
     private int level;
     private int lifes;
 
 
 
 
-    public Player(int playerHealth, double playerDamage, int lv, int lives) {
+    public Player(int playerHealth, int playerDamage, int lv, int lives) {
         health = modifyPlayerHealth(playerHealth, lv);
         damage = modifyPlayerDamage(playerDamage, lv);
         level = lv;
@@ -25,7 +25,7 @@ public class Player {
         return health;
     }
 
-    public double setDamage()
+    public int setDamage()
     {
         return damage;
     }
@@ -62,16 +62,16 @@ public class Player {
         return newHealth;
     }
 
-    public double modifyPlayerDamage(double damage, int lv)
+    public int modifyPlayerDamage(int damage, int lv)
     {
-        double newDamage = 0;
+        int newDamage = 0;
         int isDivisibleByTwo = level % 2;
 
         if(lv <= 13)
         {
             if (isDivisibleByTwo == 0)
             {
-                newDamage = Math.pow(damage, 1.4);
+                newDamage = (int) Math.pow(damage, 1.4);
             }
 
         }

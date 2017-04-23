@@ -39,6 +39,8 @@ public class GameMain {
     TextView textPlayerNum = (TextView) findViewById(R.id.displayPlayerNum);
     TextView textMonsterNum = (TextView) findViewById(R.id.displayMonsterNum);
     TextView textMathSymbol = (TextView) findViewById(R.id.displayMathSymbol);
+    TextView textDeath = (TextView) findViewById(R.id.displayDeathMessage);
+    TextView textWin = (TextView) findViewById(R.id.displayWinMessage);
 
     // EditText
     EditText playerAnswer = (EditText) findViewById(R.id.displayPlayerAns);
@@ -61,10 +63,10 @@ public class GameMain {
 
         // Character varaibles
     private int playerHealth =  100;
-    private double playerDamage = 4;
+    private int playerDamage = 4;
         // Monster variables
     private int monsterHealth = 50;
-    private double monsterDamage = 5;
+    private int monsterDamage = 5;
 
     // Constructors
     Player player = new Player(playerHealth, playerDamage, lv, lives);
@@ -86,19 +88,53 @@ public class GameMain {
     }
 
 
-    private void runGame()
+    private void runGame(boolean run)
     {
+        if(run == true)
+        {
+            game();
+        }
 
     }
 
     private void game()
     {
-        timer.setTime();
-        time();
-        nameOfMonsterForDisplay();
-        setTextViews();
-        userIntAnswer = Integer.parseInt(userStringAnswer);
+        String dead = "YOU DIED!";
+        String winLv = "YOU WON.... this level. ON TO THE NEXT!!";
+        String winMath = "YOU WON.... this math version. ON TO THE NEXT!!";
+        String megaWin = "YOU BEAT THE WHOLE GAME!!!";
+        if(lives != 0) {
 
+            timer.setTime();
+            time();
+            nameOfMonsterForDisplay();
+            setTextViews();
+
+            gameEnter.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    userIntAnswer = Integer.parseInt(userStringAnswer);
+                }
+            });
+
+
+            if(playerType != "allMath" && lv < 15 )
+            {
+
+                gameRound(dead, winLv, winMath);
+
+
+            }
+            else if (playerType == "allMath")
+            {
+                gameRound(dead, winLv, megaWin);
+            }
+
+
+
+
+
+        }
 
         
     }
@@ -300,5 +336,44 @@ public class GameMain {
                 }
             }
         });
+    }
+
+    private void gameRound(String death, String miniWin, String bigWin)
+    {
+        int correctAnswer = mathProblem.mathSwitch(playerType);
+        int pH = player.setHealth();
+        int mH = monster.setHealth();
+        int pD = player.setDamage();
+        int mD = monster.setDamage();
+        while ((pH != 0) && (mH != 0)) {
+
+            if (correctAnswer == userIntAnswer) {
+                mH = battle.round(pH, mH, pD, mD, true);
+            } else pH = battle.round(pH, mH, pD, mD, false);
+
+            textPlayerHealth.setText(pH);
+            textMonsterHealth.setText(mH);
+        }
+
+        if (pH == 0)
+        {
+            lives--;
+            textDeath.setText(death);
+            // display the death screen
+        } else if (mH == 0 && lv < 14)
+        {
+            textWin.setText(miniWin);
+            // display the lv break screen
+        }
+        else if (mH == 0 && lv == 14 && playerType != "allMath")
+        {
+            textWin.setText(bigWin);
+            // display the win screen
+        }
+        else if (mH == 0 && lv == 18 && playerType == "allMath")
+        {
+            textWin.setText(bigWin);
+            // display the best win screen
+        }
     }
 }

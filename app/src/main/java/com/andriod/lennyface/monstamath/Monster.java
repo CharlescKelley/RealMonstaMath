@@ -5,7 +5,7 @@ import java.util.Random;
 public class Monster {
 
     private int health;
-    private double damage;
+    private int damage;
     private int level;
     private String monsterName = "";
     private String bossName = "";
@@ -33,7 +33,7 @@ public class Monster {
         return health;
     }
 
-    public double setDamage()
+    public int setDamage()
     {
         return damage;
     }
@@ -46,7 +46,7 @@ public class Monster {
         bossName = bosses[num];
     }
 
-    public Monster(int monsterHealth, double monsterDamage, int lv) {
+    public Monster(int monsterHealth, int monsterDamage, int lv) {
         health = modifyMonsterHealth(monsterHealth, lv);
         damage = modifyMonsterDamage(monsterDamage, lv);
 
@@ -84,16 +84,16 @@ public class Monster {
         return newHealth;
     }
 
-    public double modifyMonsterDamage(double damage, int lv)
+    public int modifyMonsterDamage(int damage, int lv)
     {
-        double newDamage = 0;
+        int newDamage = 0;
         int isDivisibleByTwo = level % 2;
 
         if(lv <= 13)
         {
             if (isDivisibleByTwo == 0)
             {
-                newDamage = Math.pow(damage, 1.05);
+                newDamage = (int) Math.pow(damage, 1.05);
             }
 
         }
