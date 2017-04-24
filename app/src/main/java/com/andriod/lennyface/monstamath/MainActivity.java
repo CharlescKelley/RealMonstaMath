@@ -61,9 +61,10 @@ public class MainActivity extends AppCompatActivity {
     boolean isrunning = false;
     String mathType = "";
 
-    private Button bAllMath;
-    private ImageButton numZero, numOne, numTwo, numThree, numFour, numFive, numSix, numSeven, numEight, numNine;
-    private ImageButton additionClass, subtractionClass, multiplicationClass, divisionClass;
+    Button bAllMath;
+    ImageButton numZero, numOne, numTwo, numThree, numFour, numFive, numSix, numSeven, numEight, numNine;
+    ImageButton additionClass, subtractionClass, multiplicationClass, divisionClass;
+    ImageButton characterSelectBack, startGame;
 
 
     @Override
@@ -78,9 +79,15 @@ public class MainActivity extends AppCompatActivity {
         titleScreen.setBackgroundColor(Color.TRANSPARENT);
 
 
-        ImageButton characterSelectBack, startGame;
 
-        numZero = (ImageButton) findViewById(R.id.zeroBtn);
+        titleScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeToCharacterSelect();
+            }
+        });
+
+        numZero = (ImageButton) character_select.findViewById(R.id.zeroBtn);
         numOne = (ImageButton) findViewById(R.id.oneBtn);
         numTwo = (ImageButton) findViewById(R.id.twoBtn);
         numThree = (ImageButton) findViewById(R.id.threeBtn);
@@ -98,12 +105,6 @@ public class MainActivity extends AppCompatActivity {
         bAllMath = (Button) findViewById(R.id.allNumBtn);
         startGame = (ImageButton) findViewById(R.id.startBtn);
 
-        bAllMath.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setAllNumsPicked();
-            }
-        });
 
         numZero.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -175,6 +176,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        bAllMath.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setAllNumsPicked();
+            }
+        });
+
         additionClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -210,14 +218,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        titleScreen.setOnClickListener(new View.OnClickListener() {
+        characterSelectBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeToCharacterSelect();
+                goBack();
             }
         });
 
-        SQLiteOpenHelper dbHelpler = new DB_helper(this); // instance  casted as the super class to
+        //SQLiteOpenHelper dbHelpler = new DB_helper(this); // instance  casted as the super class to
         // call methods of super class easier
 
        // database_SaveGame = dbHelpler.getWritableDatabase();
@@ -261,5 +269,13 @@ public class MainActivity extends AppCompatActivity {
         isrunning = true;
         getWindow().setBackgroundDrawableResource(R.drawable.ui_normal);
     }
+
+    public void goBack()
+    {
+        getWindow().setBackgroundDrawableResource(R.drawable.title_screen);
+        setContentView(activity_main);
+    }
+
+
 
 }
