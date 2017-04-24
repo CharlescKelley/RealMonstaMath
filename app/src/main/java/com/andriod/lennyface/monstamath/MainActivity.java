@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.andriod.lennyface.monstamath.database.DB_helper;
@@ -32,22 +33,11 @@ public class MainActivity extends AppCompatActivity {
     // character select screen
 
         //Buttons (Numbers player can choose to use, characters player can play as and back button)
-//    Button numZero;
-//    Button numOne;
-//    Button numTwo;
-//    Button numThree;
-//    Button numFour;
-//    Button numFive;
-//    Button numSix;
-//    Button numSeven;
-//    Button numEight;
-//    Button numNine;
-//    Button characterSelectBack;
-//    Button additionClass = (Button) findViewById(R.id.additionButton);
-//    Button subtractionClass = (Button) findViewById(R.id.subtractionButton);
-//    Button multiplicationClass = (Button) findViewById(R.id.multiplicationButton);
-//    Button divisionClass = (Button) findViewById(R.id.divisionButton);
-//    Button bAllMath = (Button) findViewById(R.id.bAllMath);;
+        Button titleScreen;
+        Button bAllMath;
+        ImageButton numZero, numOne, numTwo, numThree, numFour, numFive, numSix, numSeven, numEight, numNine;
+        ImageButton additionClass, subtractionClass, multiplicationClass, divisionClass;
+        ImageButton characterSelectBack, startGame;
 
         // TextViews ( Show the names of the character and what math they do )
 //    TextView additionName;
@@ -64,12 +54,6 @@ public class MainActivity extends AppCompatActivity {
     Button optionsBack;
     Button musicSelection;
 
-        // TextViews ( Text to display music names)
-
-
-
-
-
     // Extras
 
         //Buttons ( Player statistics, Monster/math symbols guide and back button)
@@ -83,20 +67,11 @@ public class MainActivity extends AppCompatActivity {
     TextView ansPercentage;
     TextView charactersCompleted;
 
-
-
-
-
-
         // Variables
 
-    int[] pickedNums = new int[10];
+    int[] pickedNums = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
     boolean isrunning = false;
     String mathType = "";
-
-
-
-    Button titleScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,8 +80,30 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setBackgroundDrawableResource(R.drawable.title_screen);
 
+        SQLiteOpenHelper dbHelpler = new DB_helper(this); // instance  casted as the super class to
+        // call methods of super class easier
+
+        numZero = (ImageButton) findViewById(R.id.zeroBtn);
+        numOne = (ImageButton) findViewById(R.id.oneBtn);
+        numTwo = (ImageButton) findViewById(R.id.twoBtn);
+        numThree = (ImageButton) findViewById(R.id.threeBtn);
+        numFour = (ImageButton) findViewById(R.id.fourBtn);
+        numFive = (ImageButton) findViewById(R.id.fiveBtn);
+        numSix = (ImageButton) findViewById(R.id.sixBtn);
+        numSeven = (ImageButton) findViewById(R.id.sevenBtn);
+        numEight = (ImageButton) findViewById(R.id.eightBtn);
+        numNine = (ImageButton) findViewById(R.id.nineBtn);
+        characterSelectBack = (ImageButton) findViewById(R.id.backBtn);
+        additionClass = (ImageButton) findViewById(R.id.additionBtn);
+        subtractionClass = (ImageButton) findViewById(R.id.subtractionBtn);
+        multiplicationClass = (ImageButton) findViewById(R.id.multiplicationBtn);
+        divisionClass = (ImageButton) findViewById(R.id.divisionBtn);
+        bAllMath = (Button) findViewById(R.id.allNumBtn);
+        startGame = (ImageButton) findViewById(R.id.startBtn);
+
         titleScreen = (Button) findViewById(R.id.titleScreenButton);
         titleScreen.setBackgroundColor(Color.TRANSPARENT);
+
         titleScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,11 +111,122 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        SQLiteOpenHelper dbHelpler = new DB_helper(this); // instance  casted as the super class to
-                                                          // call methods of super class easier
+        bAllMath.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        numZero.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                setPickedNums(0);
+            }
+        });
+
+        numOne.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                setPickedNums(1);
+            }
+        });
+
+        numTwo.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                setPickedNums(2);
+            }
+        });
+
+        numThree.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                setPickedNums(3);
+            }
+        });
+
+        numFour.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                setPickedNums(4);
+            }
+        });
+
+        numFive.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                setPickedNums(5);
+            }
+        });
+
+        numSix.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                setPickedNums(6);
+            }
+        });
+
+        numSeven.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                setPickedNums(7);
+            }
+        });
+
+        numEight.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                setPickedNums(8);
+            }
+        });
+
+        numNine.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                setPickedNums(9);
+            }
+        });
+
+        additionClass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickClass("addition");
+            }
+        });
+
+        subtractionClass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickClass("subtraction");
+            }
+        });
+
+        multiplicationClass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickClass("multiplication");
+            }
+        });
+
+        divisionClass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickClass("division");
+            }
+        });
+
+        startGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeToCharacterSelect();
+            }
+        });
 
 
-        database_SaveGame = dbHelpler.getWritableDatabase();
+
+
+       // database_SaveGame = dbHelpler.getWritableDatabase();
 
 
 
@@ -132,4 +240,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(character_select);
     }
 
+    public void setPickedNums(int num)
+    {
+        int n = 0;
+        if(n < pickedNums.length)
+        {
+            pickedNums[n] = num;
+            n++;
+        }
+
+    }
+
+    public void setAllNumsPicked()
+    {
+        for(int i = 0; i < pickedNums.length; i++)
+        {
+            pickedNums[i] = i;
+        }
+    }
+
+    public void pickClass(String mathClass)
+    {
+        mathType = mathClass;
+    }
+
+    public void runGame()
+    {
+        isrunning = true;
+        getWindow().setBackgroundDrawableResource(R.drawable.ui_normal);
+    }
 }
