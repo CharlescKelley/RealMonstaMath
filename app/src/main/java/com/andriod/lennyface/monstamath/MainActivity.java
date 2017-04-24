@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        numZero = (ImageButton) character_select.findViewById(R.id.zeroBtn);
+        numZero = (ImageButton) findViewById(R.id.zeroBtn);
         numOne = (ImageButton) findViewById(R.id.oneBtn);
         numTwo = (ImageButton) findViewById(R.id.twoBtn);
         numThree = (ImageButton) findViewById(R.id.threeBtn);
