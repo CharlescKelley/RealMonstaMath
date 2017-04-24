@@ -80,8 +80,10 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setBackgroundDrawableResource(R.drawable.title_screen);
 
-        SQLiteOpenHelper dbHelpler = new DB_helper(this); // instance  casted as the super class to
-        // call methods of super class easier
+
+        titleScreen = (Button) findViewById(R.id.titleScreenButton);
+        titleScreen.setBackgroundColor(Color.TRANSPARENT);
+
 
         numZero = (ImageButton) findViewById(R.id.zeroBtn);
         numOne = (ImageButton) findViewById(R.id.oneBtn);
@@ -101,8 +103,7 @@ public class MainActivity extends AppCompatActivity {
         bAllMath = (Button) findViewById(R.id.allNumBtn);
         startGame = (ImageButton) findViewById(R.id.startBtn);
 
-        titleScreen = (Button) findViewById(R.id.titleScreenButton);
-        titleScreen.setBackgroundColor(Color.TRANSPARENT);
+
 
         titleScreen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         bAllMath.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                setAllNumsPicked();
             }
         });
 
@@ -219,12 +220,13 @@ public class MainActivity extends AppCompatActivity {
         startGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeToCharacterSelect();
+                runGame();
             }
         });
 
 
-
+        SQLiteOpenHelper dbHelpler = new DB_helper(this); // instance  casted as the super class to
+        // call methods of super class easier
 
        // database_SaveGame = dbHelpler.getWritableDatabase();
 
