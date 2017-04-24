@@ -19,6 +19,7 @@ import org.w3c.dom.Text;
 import static com.andriod.lennyface.monstamath.R.layout.activity_main;
 import static com.andriod.lennyface.monstamath.R.layout.character_select;
 
+
 public class MainActivity extends AppCompatActivity {
 
     SQLiteDatabase database_SaveGame; // reference to database object
@@ -34,19 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Buttons (Numbers player can choose to use, characters player can play as and back button)
         Button titleScreen;
-        Button bAllMath;
-        ImageButton numZero, numOne, numTwo, numThree, numFour, numFive, numSix, numSeven, numEight, numNine;
-        ImageButton additionClass, subtractionClass, multiplicationClass, divisionClass;
-        ImageButton characterSelectBack, startGame;
-
-        // TextViews ( Show the names of the character and what math they do )
-//    TextView additionName;
-//    TextView subtractionName;
-//    TextView multiplicationName;
-//    TextView divisionName;
-//    TextView tAllMath;
-
-
 
     // options menu
 
@@ -73,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
     boolean isrunning = false;
     String mathType = "";
 
+    private Button bAllMath;
+    private ImageButton numZero, numOne, numTwo, numThree, numFour, numFive, numSix, numSeven, numEight, numNine;
+    private ImageButton additionClass, subtractionClass, multiplicationClass, divisionClass;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
         titleScreen = (Button) findViewById(R.id.titleScreenButton);
         titleScreen.setBackgroundColor(Color.TRANSPARENT);
 
+
+        ImageButton characterSelectBack, startGame;
 
         numZero = (ImageButton) findViewById(R.id.zeroBtn);
         numOne = (ImageButton) findViewById(R.id.oneBtn);
@@ -102,15 +97,6 @@ public class MainActivity extends AppCompatActivity {
         divisionClass = (ImageButton) findViewById(R.id.divisionBtn);
         bAllMath = (Button) findViewById(R.id.allNumBtn);
         startGame = (ImageButton) findViewById(R.id.startBtn);
-
-
-
-        titleScreen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeToCharacterSelect();
-            }
-        });
 
         bAllMath.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,16 +210,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        titleScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeToCharacterSelect();
+            }
+        });
 
         SQLiteOpenHelper dbHelpler = new DB_helper(this); // instance  casted as the super class to
         // call methods of super class easier
 
        // database_SaveGame = dbHelpler.getWritableDatabase();
 
-
-
-        //GameMain game = new GameMain(pickedNums, isrunning, mathType);
-
+       // GameMain game = new GameMain(pickedNums, isrunning, mathType);
     }
 
     private void changeToCharacterSelect()
@@ -241,6 +230,7 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setBackgroundDrawableResource(R.drawable.brown_background);
         setContentView(character_select);
     }
+
 
     public void setPickedNums(int num)
     {
@@ -271,4 +261,5 @@ public class MainActivity extends AppCompatActivity {
         isrunning = true;
         getWindow().setBackgroundDrawableResource(R.drawable.ui_normal);
     }
+
 }
