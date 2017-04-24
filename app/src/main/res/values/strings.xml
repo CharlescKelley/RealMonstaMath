@@ -84,4 +84,6 @@
     <string name="deuteranomaly_red_and_green">Deuteranomaly (Red and Green)</string>
     <string name="protanomaly_red_and_green">Protanomaly (Red and Green)</string>
     <string name="tritanomaly_blue_and_yellow">Tritanomaly (Blue and Yellow)</string>
+    <string name="addition_button">addition Button</string>
+    <string name="subtraction_button">subtraction button</string>
 </resources>
