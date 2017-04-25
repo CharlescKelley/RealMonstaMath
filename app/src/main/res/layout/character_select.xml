@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.andriod.lennyface.monstamath.MainActivity">
+    tools:context="com.andriod.lennyface.monstamath.Character_Select">
 
     <TextView
         android:id="@+id/divisionText"

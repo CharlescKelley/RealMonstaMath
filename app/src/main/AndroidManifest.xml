@@ -16,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="Character_Select"></activity>
+        <activity android:name="GameMain"></activity>
         <activity android:name=".settings_activity" />
         <activity android:name=".colorblind" />
         <activity android:name=".music_selection"></activity>

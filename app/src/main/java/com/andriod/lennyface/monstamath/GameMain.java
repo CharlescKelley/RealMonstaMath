@@ -1,33 +1,52 @@
 package com.andriod.lennyface.monstamath;
 
 
+import android.media.Image;
+import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
-
 import java.util.Random;
 
+import static com.andriod.lennyface.monstamath.R.layout.character_select;
+import static com.andriod.lennyface.monstamath.R.layout.gamemain;
 
-public class GameMain {
 
-//    //Buttons ( Num select for answering questions, button to go to options menu, enter answer
-//    // and back button for if player enters the wrong num by accident)
-//
-//    Button optionsDuringGame = (Button) findViewById(R.id.optionsButton);
-//    Button gameNumZero = (Button) findViewById(R.id.numZero);
-//    Button gameNumOne = (Button) findViewById(R.id.numOne);
-//    Button gameNumTwo = (Button) findViewById(R.id.numTwo);
-//    Button gameNumThree = (Button) findViewById(R.id.numThree);
-//    Button gameNumFour = (Button) findViewById(R.id.numFour);
-//    Button gameNumFive = (Button) findViewById(R.id.numFive);
-//    Button gameNumSix = (Button) findViewById(R.id.numSix);
-//    Button gameNumSeven = (Button) findViewById(R.id.numSeven);
-//    Button gameNumEight = (Button) findViewById(R.id.numEight);
-//    Button gameNumNine = (Button) findViewById(R.id.numNine);
-//    Button gameBack = (Button) findViewById(R.id.backButton);
-//    Button gameEnter = (Button) findViewById(R.id.enterButton);
+public class GameMain  extends AppCompatActivity {
+
+
+
+    //Buttons ( Num select for answering questions, button to go to options menu, enter answer
+    // and back button for if player enters the wrong num by accident)
+
+    //Button optionsDuringGame = (Button) findViewById(R.id.optionsButton);
+    ImageButton gameNumZero, gameNumOne, gameNumTwo, gameNumThree, gameNumFour, gameNumFive;
+    ImageButton gameNumSix, gameNumSeven, gameNumEight, gameNumNine, gameBack, gameEnter;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(gamemain);
+
+        gameNumZero = (ImageButton) findViewById(R.id.zeroBtn);
+        gameNumOne = (ImageButton) findViewById(R.id.oneBtn);
+        gameNumTwo = (ImageButton) findViewById(R.id.twoBtn);
+        gameNumThree = (ImageButton) findViewById(R.id.threeBtn);
+        gameNumFour = (ImageButton) findViewById(R.id.fourBtn);
+        gameNumFive = (ImageButton) findViewById(R.id.fiveBtn);
+        gameNumSix = (ImageButton) findViewById(R.id.sixBtn);
+        gameNumSeven = (ImageButton) findViewById(R.id.sevenBtn);
+        gameNumEight = (ImageButton) findViewById(R.id.eightBtn);
+        gameNumNine = (ImageButton) findViewById(R.id.nineBtn);
+        gameBack = (ImageButton) findViewById(R.id.backBtn);
+        gameEnter = (ImageButton) findViewById(R.id.eightBtn);
+    }
 //
 //    //Level Change Screen
 //
