@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
        // database_SaveGame = dbHelpler.getWritableDatabase();
 
-       // GameMain game = new GameMain(character_select.pickedNums, isrunning, mathType);
     }
 
     private void changeToCharacterSelect()

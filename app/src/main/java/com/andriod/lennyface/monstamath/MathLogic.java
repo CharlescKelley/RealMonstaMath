@@ -1,6 +1,8 @@
 package com.andriod.lennyface.monstamath;
 
 
+import android.util.Log;
+
 import java.util.Random;
 
 public class MathLogic {
@@ -14,28 +16,28 @@ public class MathLogic {
     private int[] nums = new int[10];
 
     public MathLogic(int[] arrayOfNums) {
-        for(int i = 0; i <= nums.length; i++)
-        {
-            nums[i] = arrayOfNums[i];
-        }
+        nums = arrayOfNums;
     }
 
     public void createPlayerNum()
     {
         playerNum = rand.nextInt(10);
+        Log.d("character","here it is " + playerNum);
         for(int i = 0; i <= nums.length; i++)
+
         {
             if(nums[i] != -1)
             {
-                if((playerNum != nums[0]) || (playerNum != nums[1]) ||(playerNum != nums[2]) ||
-                        (playerNum != nums[3]) ||(playerNum != nums[4]) || (playerNum != nums[5]) ||
-                        (playerNum != nums[6]) || (playerNum != nums[7]) ||(playerNum != nums[8]) ||
-                        (playerNum != nums[9]))
+                if((playerNum == nums[0]) || (playerNum == nums[1]) ||(playerNum == nums[2]) ||
+                        (playerNum == nums[3]) ||(playerNum == nums[4]) || (playerNum == nums[5]) ||
+                        (playerNum == nums[6]) || (playerNum == nums[7]) ||(playerNum == nums[8]) ||
+                        (playerNum == nums[9]))
                 {
-                    createPlayerNum();
+                    return;
                 }
             }
         }
+        createPlayerNum();
     }
 
     public void createMonsterNum()
@@ -45,15 +47,16 @@ public class MathLogic {
         {
             if(nums[i] != -1)
             {
-                if((monsterNum != nums[0]) || (monsterNum != nums[1]) ||(monsterNum != nums[2]) ||
-                        (monsterNum != nums[3]) ||(monsterNum != nums[4]) || (monsterNum != nums[5]) ||
-                        (monsterNum != nums[6]) || (monsterNum != nums[7]) ||(monsterNum != nums[8]) ||
-                        (monsterNum != nums[9]))
+                if((monsterNum == nums[0]) || (monsterNum == nums[1]) ||(monsterNum == nums[2]) ||
+                        (monsterNum == nums[3]) ||(monsterNum == nums[4]) || (monsterNum == nums[5]) ||
+                        (monsterNum == nums[6]) || (monsterNum == nums[7]) ||(monsterNum == nums[8]) ||
+                        (monsterNum == nums[9]))
                 {
-                    createMonsterNum();
+                    return;
                 }
             }
         }
+        createMonsterNum();
     }
 
     public int mathSwitch(String type)

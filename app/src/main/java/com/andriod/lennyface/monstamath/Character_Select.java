@@ -8,12 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
+
 import static com.andriod.lennyface.monstamath.R.layout.activity_main;
 import static com.andriod.lennyface.monstamath.R.layout.character_select;
 
 public class Character_Select extends AppCompatActivity {
 
-    int[] pickedNums = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+    ArrayList<Integer> pickedNums = new ArrayList<>();
     boolean isrunning = false;
     String mathType = "";
 
@@ -23,6 +25,7 @@ public class Character_Select extends AppCompatActivity {
     ImageButton additionClass, subtractionClass, multiplicationClass, divisionClass;
     ImageButton characterSelectBack, startGame;
 
+    GameMain game;
 
 
     @Override
@@ -30,6 +33,7 @@ public class Character_Select extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(character_select);
         getWindow().setBackgroundDrawableResource(R.drawable.brown_background);
+
 
         numZero = (ImageButton) findViewById(R.id.zeroBtn);
         numOne = (ImageButton) findViewById(R.id.oneBtn);
@@ -171,16 +175,16 @@ public class Character_Select extends AppCompatActivity {
         });
 
 
-    }
 
+    }
 
 
     public void setPickedNums(int num)
     {
         int n = 0;
-        if(n < pickedNums.length)
+        if(n < 10)
         {
-            pickedNums[n] = num;
+            pickedNums.add(num);
             n++;
         }
         Log.d("yea","here it is " + num);
@@ -188,9 +192,11 @@ public class Character_Select extends AppCompatActivity {
 
     public void setAllNumsPicked()
     {
-        for(int i = 0; i < pickedNums.length; i++)
+        for(int i = 0; i < 10; i++)
         {
-            pickedNums[i] = i;
+
+            pickedNums.add(i);
+            Log.d("yea","here it is " + pickedNums.get(i));
         }
     }
 
@@ -204,6 +210,10 @@ public class Character_Select extends AppCompatActivity {
     {
         isrunning = true;
         Intent gameMain_intent = new Intent(this, GameMain.class);
+        gameMain_intent.putExtra("character", mathType);
+        gameMain_intent.putExtra("boolean", isrunning);
+        gameMain_intent.putIntegerArrayListExtra("int array",pickedNums);
+        Log.d("character", pickedNums.toString());
         startActivity(gameMain_intent);
     }
 
