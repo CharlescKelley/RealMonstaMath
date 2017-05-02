@@ -20,16 +20,17 @@ public class GameMain  extends AppCompatActivity {
 
 
 
-    //Buttons ( Num select for answering questions, button to go to options menu, enter answer
-    // and back button for if player enters the wrong num by accident)
-
-    //Button optionsDuringGame = (Button) findViewById(R.id.optionsButton);
+    //Buttons views that corrispond to the layout 
     ImageButton gameNumZero, gameNumOne, gameNumTwo, gameNumThree, gameNumFour, gameNumFive;
     ImageButton gameNumSix, gameNumSeven, gameNumEight, gameNumNine, gameBack, gameEnter;
 
+    // textviews that correspond to the layout
     TextView textCharacterName, textMonsterName, textTimer, textPlayerHealth, textMonsterHealth;
     TextView textPlayerNum, textMonsterNum, textMathSymbol, playerAnswer;
 
+    // variables for the amount of lives the player has, the levels, the nums array, the arraylist that was sent over
+    // the players answer, the monster/player name, the run boolean that was sent over, the random number generator, 
+    // the playertype for the math version, the end of a round of combat boolean, boolean for whether or not the question was answered
     private int lv = 1;
     private int lives = 3;
     private int monsterCount;
@@ -61,7 +62,9 @@ public class GameMain  extends AppCompatActivity {
     Battle battle;
     Timer timer;
 
-
+    // the oncreate where the buttons are initialized, the game is called and started, the contentview is set, the constructors 
+    // for the player, monste, battle, mathproblem and timer are created, the intent is also created to get the information that
+    // was pased over from the character select
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,7 +149,7 @@ public class GameMain  extends AppCompatActivity {
 //        playerType = mathType;
 //    }
 
-
+    // method to start the game
     private void runGame(boolean run)
     {
         if(run == true)
@@ -156,7 +159,10 @@ public class GameMain  extends AppCompatActivity {
         //else //display title screen;
 
     }
-
+    
+    // actual game method. If the player still has lives the timer is started and all the text is displayed. The question is asked
+    // and the battle is created. Based on what lv the charater is determines what message the player gets. I realized though after 
+    // that this would be in a different activity
     private void game()
     {
         String dead = "YOU DIED!";
@@ -217,6 +223,7 @@ public class GameMain  extends AppCompatActivity {
 
     }
 
+    // method to set the textviews that are diplayed, still ahve some trouble with this and havent fixed all the bugs
     private void setTextViews()
     {
         mathProblem.createPlayerNum();
@@ -245,6 +252,8 @@ public class GameMain  extends AppCompatActivity {
         else textMathSymbol.setText("/");
     }
 
+    // method for displaying with monster would show up and the name associtated. I didn't get to the actual showing of the monster
+    /// so that mett end up have going into a different method or class even but i got the name to show up.
     private void nameOfMonsterForDisplay()
     {
         if(lv <= 13)
@@ -300,6 +309,7 @@ public class GameMain  extends AppCompatActivity {
 
 
 
+    // the method that the onclick methods are in for the number buttons the player presses during the game to answer the question
     private void getUserInput()
     {
         gameNumZero.setOnClickListener(new View.OnClickListener() {
@@ -403,6 +413,7 @@ public class GameMain  extends AppCompatActivity {
         });
     }
 
+    // This method would have gon into a different activity
     private void gameRound(String death, String miniWin, String bigWin)
     {
         int correctAnswer = mathProblem.mathSwitch(playerType);
@@ -442,6 +453,8 @@ public class GameMain  extends AppCompatActivity {
         }
     } // end gameRound
 
+    // changes the array into an array list. I would ahve kept it as an arraylist but when i found out that intents only play nice
+    // with array list and not arrays i had already coded the majority of the game using arrays.
     public void changeArrays(ArrayList<Integer> arraylistNums, int[] nums)
     {
         for(int i = 0; i < arraylistNums.size(); i++)
